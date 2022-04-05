@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_proto_library(
+    name = "service_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "github.com/tolikzinovyev/go-algorand-grpc-sdk/client/internal/proto",
+    protos = ["@com_github_tolikzinovyev_go_algorand_grpc//:service_proto"],
+    visibility = ["//visibility:private"],
+)
+
+go_library(
+    name = "proto",
+    embed = [":service_go_proto"],
+    importpath = "github.com/tolikzinovyev/go-algorand-grpc-sdk/client/internal/proto",
+    visibility = ["//client:__subpackages__"],
+)

@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "types",
+    srcs = [
+        "account_data.go",
+        "address.go",
+        "applications.go",
+        "asset.go",
+        "auction.go",
+        "basics.go",
+        "block.go",
+        "errors.go",
+        "overflow.go",
+        "signature.go",
+        "transaction.go",
+    ],
+    importpath = "github.com/tolikzinovyev/go-algorand-grpc-sdk/types",
+    visibility = ["//visibility:public"],
+    deps = ["@org_golang_x_crypto//ed25519:go_default_library"],
+)

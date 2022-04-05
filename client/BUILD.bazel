@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = [
+        "client.go",
+        "encoding.go",
+        "types.go",
+    ],
+    importpath = "github.com/tolikzinovyev/go-algorand-grpc-sdk/client",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//client/internal/proto",
+        "//types",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)
